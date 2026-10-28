@@ -321,14 +321,6 @@ p {
   background: #fff;
   box-shadow: 0 16px 34px rgba(8, 25, 60, 0.38);
 }
-.arr {
-  display: inline-block;
-  transition: transform 0.3s;
-}
-.btn:hover .arr,
-.more:hover .arr {
-  transform: translateX(5px);
-}
 .more {
   display: inline-flex;
   align-items: center;
@@ -728,10 +720,12 @@ p {
   flex-direction: column;
   gap: 12px;
 }
+/* Alturas fijas por tamaño para que las 4 tarjetas se suelten a la vez: --H encabezado, --ch tarjeta, --d escalón.
+   Si cambias los textos de «Cómo trabajamos», vuelve a medir que quepan en --ch. */
 .pinwrap {
   --H: 196px;
   --d: 24px;
-  --ch: 200px;
+  --ch: 244px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -756,12 +750,13 @@ p {
 }
 @media (max-width: 820px) {
   .pinwrap {
-    --H: 250px;
+    --H: 190px;
+    --ch: 272px;
   }
 }
 @media (max-width: 480px) {
   .pinwrap {
-    --H: 300px;
+    --H: 220px;
     --d: 18px;
   }
 }
@@ -851,12 +846,18 @@ p {
 .scard:nth-child(even) .numbox {
   color: #0b7f7d;
 }
-@media (max-width: 560px) {
-  .pinwrap {
-    --ch: 260px;
-  }
+/* En tableta la ilustración se oculta para dejar el ancho al texto */
+@media (max-width: 820px) {
   .sill {
     display: none;
+  }
+  .scard {
+    grid-template-columns: 72px 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .pinwrap {
+    --ch: 344px;
   }
   .scard {
     grid-template-columns: 1fr;
@@ -871,6 +872,18 @@ p {
   }
   .scard h3 {
     font-size: 19px !important;
+  }
+}
+/* Celulares muy angostos: tarjeta un poco más compacta para que el texto quepa */
+@media (max-width: 380px) {
+  .pinwrap {
+    --ch: 380px;
+  }
+  .scard {
+    padding: 24px 20px;
+  }
+  .scard p {
+    font-size: 15px;
   }
 }
 .numbox {

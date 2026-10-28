@@ -43,13 +43,13 @@ function DemoLink({ demo }: { demo: Demo }) {
   if (demo.link === "here") {
     return (
       <a className="btn dcta" href={demo.href}>
-        Recorre esta página <span className="arr">↑</span>
+        Recorre esta página
       </a>
     );
   }
   return (
     <a className="btn dcta" href={demo.href} target="_blank" rel="noopener noreferrer">
-      {demo.kind === "client" ? "Visitar sitio" : "Ver demo"} <span className="arr">↗</span>
+      {demo.kind === "client" ? "Visitar sitio" : "Ver demo"}
       <span className="sr-only"> (se abre en otra pestaña)</span>
     </a>
   );
@@ -112,7 +112,7 @@ export function Demos() {
                 ))}
               </ul>
               <a className="btn dcta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                {invite.cta} <span className="arr">→</span>
+                {invite.cta}
                 <span className="sr-only"> (abre WhatsApp)</span>
               </a>
             </div>

@@ -82,22 +82,22 @@ export const steps = [
   {
     key: "store",
     title: "Conocemos tu negocio",
-    text: "Hablamos sobre tus objetivos, necesidades y lo que quieres lograr.",
+    text: "Platicamos contigo, sin costo, sobre tu negocio, tus clientes y lo que quieres lograr. Revisamos lo que ya tienes, como tus redes sociales o tu página, para entender qué te funciona y qué te hace falta.",
   },
   {
     key: "plan",
     title: "Diseñamos la estrategia",
-    text: "Creamos un plan a la medida para tu negocio.",
+    text: "Con esa información te proponemos un plan claro: qué herramientas necesitas, cómo se verá tu página y qué secciones tendrá. Lo revisamos juntos, sin tecnicismos, y lo ajustamos antes de empezar.",
   },
   {
     key: "rocket",
     title: "Implementamos y lanzamos",
-    text: "Desarrollamos, configuramos y ponemos en marcha.",
+    text: "Construimos tu sitio y configuramos lo que haga falta: WhatsApp, Google, reservas o catálogo. Te mostramos avances en cada etapa, hacemos los cambios que pidas y lo publicamos solo cuando estés satisfecho con el resultado.",
   },
   {
     key: "handshake",
     title: "Te acompañamos",
-    text: "Damos seguimiento y optimizamos para mejorar resultados.",
+    text: "Después del lanzamiento seguimos contigo. Te enseñamos a usar tus herramientas paso a paso, resolvemos tus dudas y revisamos cómo responden tus clientes para hacer mejoras que te den mejores resultados.",
   },
 ] as const;
 

@@ -38,7 +38,7 @@ export function Process() {
           </div>
         </div>
         <a className="more" href="#contacto">
-          Conoce nuestro proceso <span className="arr">→</span>
+          Conoce nuestro proceso
         </a>
       </div>
     </section>

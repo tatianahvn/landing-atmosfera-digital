@@ -63,7 +63,7 @@ export function MobileMenu() {
           </a>
         ))}
         <a className="btn mnav-cta" href="#contacto" onClick={close}>
-          Contacto <span className="arr">→</span>
+          Contacto
         </a>
       </nav>
     </div>

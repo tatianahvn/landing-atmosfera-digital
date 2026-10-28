@@ -28,7 +28,7 @@ export function Hero() {
             Te ayudamos a dar el siguiente paso en el mundo digital con soluciones simples, prácticas y a tu medida.
           </p>
           <a className="btn" href="#contacto">
-            Agenda una asesoría gratuita <span className="arr">→</span>
+            Agenda una asesoría gratuita
           </a>
           <ul className="points">
             {heroPoints.map((p) => (

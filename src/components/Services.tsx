@@ -37,7 +37,7 @@ export function Services() {
           ))}
         </div>
         <a className="more" href="#contacto">
-          Conoce todos los servicios <span className="arr">→</span>
+          Conoce todos los servicios
         </a>
       </div>
     </section>

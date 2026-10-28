@@ -39,6 +39,8 @@ Registro de decisiones tomadas donde el encargo era ambiguo o había que elegir.
   - **Tarjetas más pequeñas** (a petición, 3/4): tres columnas en escritorio (~340 px cada una), dos en tableta y una en celular. Con cinco tarjetas, la última fila queda con dos.
   - El menú y el ancla pasaron de «Demos» (`#demos`) a «Proyectos» (`#proyectos`). En `content.ts` cada tarjeta tiene `kind` (`client` o `demo`) y `link` (`here`, `external` o `soon`).
 
+- **Textos más detallados en «Cómo trabajamos»** (a petición, al menos 3 renglones): cada paso explica en lenguaje sencillo qué pasa y qué hace el cliente (plática inicial sin costo, plan revisado juntos, avances y cambios antes de publicar, acompañamiento después). Como las tarjetas apiladas tienen altura fija, se midieron en el navegador de 320 a 1280 px y se ajustaron las alturas (`--ch`): 244 px en escritorio, 272 px hasta 820 px, 344 px hasta 560 px y 380 px hasta 380 px (en este último ancho, con algo menos de relleno y texto de 15 px). El encabezado fijo (`--H`) se redujo a lo que realmente ocupa. En tableta (≤ 820 px) se oculta la ilustración para dejarle el ancho al texto; antes, a 600 px, el texto quedaba en 10 renglones. En pantallas de 320 × 640 la pila no cabe completa a la vista; el contenido se lee igual.
+
 - **Botones en las tarjetas de proyectos** (a petición: el enlace casi no se distinguía): «Visitar sitio», «Ver demo», «Recorre esta página» y «Agenda una asesoría gratuita» usan el mismo botón relleno de la página (`.btn`), en tamaño compacto (`.dcta`). «En preparación» queda como píldora punteada para que no parezca algo en lo que se puede hacer clic.
 
 ## Observaciones (sin cambiar)

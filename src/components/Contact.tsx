@@ -28,7 +28,7 @@ export function Contact() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Agenda una asesoría gratuita <span className="arr">→</span>
+            Agenda una asesoría gratuita
           </a>
         </div>
       </div>
