@@ -4,7 +4,10 @@ import { heroPoints } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section id="inicio" style={{ position: "relative", paddingTop: 120, paddingBottom: 90, background: "#DCE9F8" }}>
+    <section
+      id="inicio"
+      style={{ position: "relative", paddingTop: 120, paddingBottom: 90, background: "var(--hero-bg)" }}
+    >
       <div className="herobg" />
       <div className="herowash" />
       <div className="wrap" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "56px 48px" }}>
@@ -21,7 +24,7 @@ export function Hero() {
           <h1 style={{ fontSize: "clamp(32px,4.4vw,52px)", lineHeight: 1.1, fontWeight: 700 }}>
             Soluciones digitales que <span className="accent">impulsan tu negocio local.</span>
           </h1>
-          <p style={{ fontSize: 17, color: "#1F2A44", maxWidth: 500 }}>
+          <p style={{ fontSize: 17, color: "var(--body-2)", maxWidth: 500 }}>
             Te ayudamos a dar el siguiente paso en el mundo digital con soluciones simples, prácticas y a tu medida.
           </p>
           <a className="btn" href="#contacto">

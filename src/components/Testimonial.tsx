@@ -27,7 +27,7 @@ export function Testimonial() {
             </div>
             <div>
               <div style={{ fontWeight: 700, fontSize: 16 }}>{testimonial.name}</div>
-              <div style={{ color: "#3F4D66" }}>{testimonial.role}</div>
+              <div style={{ color: "var(--soft)" }}>{testimonial.role}</div>
             </div>
           </figcaption>
         </figure>

@@ -15,7 +15,7 @@ export const whatsappUrl = `https://wa.me/${site.whatsappNumber}`;
 export const navLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Casos de éxito", href: "#casos" },
+  { label: "Demos", href: "#demos" },
   { label: "Nosotros", href: "#nosotros" },
   // TODO: apunta a tu blog cuando exista
   { label: "Blog", href: "#" },
@@ -101,13 +101,49 @@ export const steps = [
   },
 ] as const;
 
-// TODO: reemplaza [Agrega tu caso] con casos reales (resultado, cliente, métricas)
-export const cases = [
-  { key: "food", tone: "cv1", title: "Tienda de alimentos", note: "[Agrega tu caso]" },
-  { key: "wrench", tone: "cv2", title: "Taller mecánico", note: "[Agrega tu caso]" },
-  { key: "scissors", tone: "cv3", title: "Estética y belleza", note: "[Agrega tu caso]" },
-  { key: "shirt", tone: "cv4", title: "Boutique de ropa", note: "[Agrega tu caso]" },
-] as const;
+// Demos para explorar. status: "here" = esta misma página, "live" = demo publicada (abre en otra pestaña),
+// "soon" = próximamente (sin enlace). image: captura del inicio en public/demos (960 × 600, WebP).
+export type Demo = {
+  key: "agency" | "salon" | "health";
+  tone: "cv1" | "cv2" | "cv3" | "cv4";
+  title: string;
+  text: string;
+  features: readonly string[];
+  status: "here" | "live" | "soon";
+  href?: string;
+  image?: string;
+};
+
+export const demos: readonly Demo[] = [
+  {
+    key: "agency",
+    tone: "cv2",
+    title: "Atmósfera Digital",
+    text: "Esta misma página es una demo: diseño a la medida, animaciones suaves y una versión pensada para celular.",
+    features: ["Tema claro y oscuro", "Animaciones", "Menú para celular", "Contacto por WhatsApp"],
+    status: "here",
+    href: "#inicio",
+    image: "/demos/atmosfera.webp",
+  },
+  {
+    key: "salon",
+    tone: "cv3",
+    title: "Salón y belleza",
+    text: "Un sitio completo para un salón: muestra servicios con precios, enseña tus trabajos y facilita agendar.",
+    features: ["Servicios y precios", "Galería de trabajos", "Citas por WhatsApp", "Mapa y horarios"],
+    status: "live",
+    href: "https://landing-salon-demo.vercel.app/",
+    image: "/demos/salon.webp",
+  },
+  {
+    key: "health",
+    tone: "cv1",
+    title: "Salud",
+    text: "Próximo ejemplo para un consultorio dental y un laboratorio clínico: tratamientos y estudios, indicaciones y citas en línea.",
+    features: ["Consultorio dental", "Laboratorio clínico"],
+    status: "soon",
+  },
+];
 
 // TODO: sustituye por un testimonio real y quita la etiqueta "Testimonio ilustrativo"
 export const testimonial = {

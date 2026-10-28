@@ -4,7 +4,7 @@ const links = [...navLinks, { label: "Contacto", href: "#contacto" }];
 
 export function Footer() {
   return (
-    <footer style={{ background: "#123A7A", color: "#D3E1F6", fontSize: 14 }}>
+    <footer style={{ background: "var(--footer-bg)", color: "#D3E1F6", fontSize: 14 }}>
       <div
         className="wrap"
         style={{ paddingTop: 48, paddingBottom: 32, display: "flex", flexDirection: "column", gap: 28 }}

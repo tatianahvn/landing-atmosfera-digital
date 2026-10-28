@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Plus_Jakarta_Sans } from "next/font/google";
 import { site } from "@/lib/content";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 // Texto: Figtree. Títulos: Plus Jakarta Sans. next/font las autohospeda (sin peticiones a Google).
@@ -31,13 +32,25 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A1530" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-MX" className={`${figtree.variable} ${jakarta.variable}`}>
+    // suppressHydrationWarning: el script de <head> cambia data-theme antes de que React hidrate.
+    <html
+      lang="es-MX"
+      data-theme="light"
+      className={`${figtree.variable} ${jakarta.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

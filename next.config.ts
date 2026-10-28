@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   poweredByHeader: false,
+  // El optimizador de next/image no funciona con output: "export"; las capturas ya van en WebP ligero.
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
