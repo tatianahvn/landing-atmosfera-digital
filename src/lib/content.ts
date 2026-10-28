@@ -15,7 +15,7 @@ export const whatsappUrl = `https://wa.me/${site.whatsappNumber}`;
 export const navLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Demos", href: "#demos" },
+  { label: "Proyectos", href: "#proyectos" },
   { label: "Nosotros", href: "#nosotros" },
   // TODO: apunta a tu blog cuando exista
   { label: "Blog", href: "#" },
@@ -101,49 +101,73 @@ export const steps = [
   },
 ] as const;
 
-// Demos para explorar. status: "here" = esta misma página, "live" = demo publicada (abre en otra pestaña),
-// "soon" = próximamente (sin enlace). image: captura del inicio en public/demos (960 × 600, WebP).
+// Proyectos y demos. kind: "client" = proyecto real para un cliente, "demo" = ejemplo para mostrar.
+// link: "here" = esta misma página, "external" = sitio publicado (abre en otra pestaña), "soon" = en preparación (sin enlace).
+// image: captura del inicio en public/demos (960 × 600, WebP). Sin image se muestra el ícono sobre el degradado.
 export type Demo = {
-  key: "agency" | "salon" | "health";
+  key: "calnorthex" | "dental" | "salon" | "agency";
   tone: "cv1" | "cv2" | "cv3" | "cv4";
+  kind: "client" | "demo";
   title: string;
   text: string;
   features: readonly string[];
-  status: "here" | "live" | "soon";
+  link: "here" | "external" | "soon";
   href?: string;
   image?: string;
 };
 
 export const demos: readonly Demo[] = [
   {
-    key: "agency",
-    tone: "cv2",
-    title: "Atmósfera Digital",
-    text: "Esta misma página es una demo: diseño a la medida, animaciones suaves y una versión pensada para celular.",
-    features: ["Tema claro y oscuro", "Animaciones", "Menú para celular", "Contacto por WhatsApp"],
-    status: "here",
-    href: "#inicio",
-    image: "/demos/atmosfera.webp",
+    key: "calnorthex",
+    tone: "cv4",
+    kind: "client",
+    title: "Constructora en USA",
+    text: "Sitio en inglés para Calnorthex Concrete, constructora de concreto en Santa Rosa, California: presenta sus servicios, muestra obras terminadas y facilita pedir una cotización.",
+    features: ["Servicios", "Galería de obras", "Testimonios", "Cotización y llamada"],
+    link: "external",
+    href: "https://calnorthex.com/",
+    image: "/demos/calnorthex.webp",
   },
   {
     key: "salon",
     tone: "cv3",
+    kind: "demo",
     title: "Salón y belleza",
     text: "Un sitio completo para un salón: muestra servicios con precios, enseña tus trabajos y facilita agendar.",
     features: ["Servicios y precios", "Galería de trabajos", "Citas por WhatsApp", "Mapa y horarios"],
-    status: "live",
+    link: "external",
     href: "https://landing-salon-demo.vercel.app/",
     image: "/demos/salon.webp",
   },
   {
-    key: "health",
+    key: "agency",
+    tone: "cv2",
+    kind: "demo",
+    title: "Atmósfera Digital",
+    text: "Esta misma página es una demo: diseño a la medida, animaciones suaves y una versión pensada para celular.",
+    features: ["Tema claro y oscuro", "Animaciones", "Menú para celular", "Contacto por WhatsApp"],
+    link: "here",
+    href: "#inicio",
+    image: "/demos/atmosfera.webp",
+  },
+  {
+    key: "dental",
     tone: "cv1",
-    title: "Salud",
-    text: "Próximo ejemplo para un consultorio dental y un laboratorio clínico: tratamientos y estudios, indicaciones y citas en línea.",
-    features: ["Consultorio dental", "Laboratorio clínico"],
-    status: "soon",
+    kind: "client",
+    title: "Clínica dental",
+    text: "Sitio en preparación para una clínica dental: sus pacientes podrán agendar citas en línea y consultar servicios, ubicación, galería y horarios.",
+    features: ["Citas en línea", "Servicios", "Mapa", "Galería", "Horarios"],
+    link: "soon",
   },
 ];
+
+// Tarjeta de invitación al final de «Proyectos y demos»: el siguiente proyecto puede ser el del visitante.
+export const invite = {
+  title: "Tu nueva página web",
+  text: "El siguiente proyecto puede ser el tuyo. Cuéntanos de tu negocio y diseñamos una página a tu medida.",
+  features: ["Diseño a tu medida", "Lista para celular", "Acompañamiento"],
+  cta: "Agenda una asesoría gratuita",
+};
 
 // TODO: sustituye por un testimonio real y quita la etiqueta "Testimonio ilustrativo"
 export const testimonial = {

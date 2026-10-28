@@ -12,35 +12,20 @@ const base = {
   "aria-hidden": true,
 } as const;
 
-export function BrowserIcon(props: SVGProps<SVGSVGElement>) {
+export function ToothIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>
-      <rect x="2.5" y="4" width="19" height="16" rx="2.5" />
-      <path d="M2.5 8.5h19" />
-      <path d="M5.5 6.25h.01M7.75 6.25h.01M10 6.25h.01" />
-      <path d="M6 12.5h6M6 15.5h4" />
-      <rect x="14.5" y="11.5" width="4" height="5" rx="1" />
+      <path d="M12 5.5C10.5 4 8.6 3.4 6.9 3.9 4.6 4.6 3.6 7 4.2 9.6c.4 1.7 1.1 3 1.4 4.6.4 2.2.6 4.6 1.6 6.1.7 1 1.9.8 2.3-.4.5-1.6.8-4.2 2.5-4.2s2 2.6 2.5 4.2c.4 1.2 1.6 1.4 2.3.4 1-1.5 1.2-3.9 1.6-6.1.3-1.6 1-2.9 1.4-4.6.6-2.6-.4-5-2.7-5.7-1.7-.5-3.6.1-5.1 1.6z" />
+      <path d="M9 7.2c1 .5 2 .8 3 .8" />
     </svg>
   );
 }
 
-export function ScissorsIcon(props: SVGProps<SVGSVGElement>) {
+export function NewSiteIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>
-      <path d="M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-      <path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-      <path d="M20 4L8.12 15.88" />
-      <path d="M14.47 14.48L20 20" />
-      <path d="M8.12 8.12L12 12" />
-    </svg>
-  );
-}
-
-export function HealthIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M12 21s-8-4.6-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.4-8 11-8 11z" />
-      <path d="M12 10v5M9.5 12.5h5" />
+      <rect x="2.5" y="4" width="19" height="16" rx="2.5" strokeDasharray="2.4 2.2" />
+      <path d="M12 9v6M9 12h6" />
     </svg>
   );
 }

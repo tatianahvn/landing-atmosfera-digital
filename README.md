@@ -25,13 +25,13 @@ src/
     icon.svg        # favicon (el logo)
   components/       # una sección por archivo: Nav, Hero, Services, Why, Process, Demos, ...
   components/illustrations/   # ilustraciones SVG como componentes
-  lib/content.ts    # textos, enlaces y datos editables (servicios, pasos, demos, testimonio)
+  lib/content.ts    # textos, enlaces y datos editables (servicios, pasos, proyectos y demos, testimonio)
 ```
 
 ## Pendientes (marcados con TODO en `src/lib/content.ts`)
 
 - [ ] Número de WhatsApp real (`site.whatsappNumber`)
-- [ ] Demo de salud (consultorio dental y laboratorio clínico): cambiar `status` a `"live"`, poner `href` y agregar su captura en `public/demos/` (`image`) cuando exista
+- [ ] Clínica dental (cliente): cuando el sitio esté publicado, cambiar `link` a `"external"`, poner `href` y agregar su captura en `public/demos/` (`image`)
 - [ ] Testimonio real y quitar la etiqueta "Testimonio ilustrativo"
 - [ ] Enlace del Blog (hoy es `#`)
 - [ ] Los botones "→" de cada servicio llevan a `#contacto`; puedes darles destino propio

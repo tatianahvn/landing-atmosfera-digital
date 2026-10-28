@@ -1,39 +1,55 @@
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 import Image from "next/image";
-import { demos, type Demo } from "@/lib/content";
-import { BrowserIcon, HealthIcon, ScissorsIcon } from "./illustrations/DemoIcons";
+import { demos, invite, whatsappUrl, type Demo } from "@/lib/content";
+import { NewSiteIcon, ToothIcon } from "./illustrations/DemoIcons";
 
-const icons: Record<Demo["key"], ReactElement> = {
-  agency: <BrowserIcon />,
-  salon: <ScissorsIcon />,
-  health: <HealthIcon />,
+// Ícono para las tarjetas que aún no tienen captura.
+const icons: Partial<Record<Demo["key"], ReactNode>> = {
+  dental: <ToothIcon />,
 };
 
-const badges: Record<Demo["status"], string> = {
-  here: "Estás aquí",
-  live: "Demo en vivo",
-  soon: "Próximamente",
+// Una sola etiqueta por tarjeta, con viñeta de color: verde para cliente, azul para demo.
+const kindLabels: Record<Demo["kind"], string> = {
+  client: "Cliente",
+  demo: "Demo",
 };
 
-// Dominio que se muestra en la barra de direcciones simulada (solo para demos publicadas).
-function hostOf(href?: string) {
-  return href?.startsWith("http") ? new URL(href).host : "";
+// Marco común de todas las tarjetas: barra de ventana estilo macOS (botones y buscador vacío)
+// y debajo la captura, o el ícono sobre el degradado cuando aún no hay captura.
+function BrowserFrame({ tone, badge, children }: { tone: string; badge?: ReactNode; children: ReactNode }) {
+  return (
+    <div className="cvis dwin">
+      <div className="dbar" aria-hidden="true">
+        <span className="ddots">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span className="durl" />
+        <span className="dbar-end" />
+      </div>
+      <div className={`dshot ${tone}`}>
+        {children}
+        {badge}
+      </div>
+    </div>
+  );
 }
 
 function DemoLink({ demo }: { demo: Demo }) {
-  if (demo.status === "soon" || !demo.href) {
+  if (demo.link === "soon" || !demo.href) {
     return <span className="dcta dcta-soon">En preparación</span>;
   }
-  if (demo.status === "here") {
+  if (demo.link === "here") {
     return (
-      <a className="dcta" href={demo.href}>
+      <a className="btn dcta" href={demo.href}>
         Recorre esta página <span className="arr">↑</span>
       </a>
     );
   }
   return (
-    <a className="dcta" href={demo.href} target="_blank" rel="noopener noreferrer">
-      Ver demo <span className="arr">↗</span>
+    <a className="btn dcta" href={demo.href} target="_blank" rel="noopener noreferrer">
+      {demo.kind === "client" ? "Visitar sitio" : "Ver demo"} <span className="arr">↗</span>
       <span className="sr-only"> (se abre en otra pestaña)</span>
     </a>
   );
@@ -41,48 +57,34 @@ function DemoLink({ demo }: { demo: Demo }) {
 
 export function Demos() {
   return (
-    <section id="demos" style={{ paddingBottom: 96 }}>
+    <section id="proyectos" style={{ paddingBottom: 96 }}>
       <div className="wrap" style={{ display: "flex", flexDirection: "column", gap: 44 }}>
         <div className="sechead">
-          <div className="eyebrow">DEMOS PARA EXPLORAR</div>
+          <div className="eyebrow">PROYECTOS Y DEMOS</div>
           <h2 className="h2">Mira cómo podría lucir tu sitio.</h2>
           <p className="lead">
-            Recorre ejemplos funcionando y date una idea de las secciones, las funciones, la calidad y el diseño que
-            puede tener la página de tu negocio.
+            Explora sitios hechos para clientes reales y demos funcionando. Date una idea de las secciones, las
+            funciones, la calidad y el diseño que puede tener la página de tu negocio.
           </p>
         </div>
-        <div className="grid">
+        <div className="demos-grid">
           {demos.map((d) => (
             <article key={d.key} className="card case demo">
-              <div className={`cvis ${d.tone}${d.image ? " has-shot" : ""}`}>
+              <BrowserFrame
+                tone={d.image ? "" : d.tone}
+                badge={<span className={`dbadge ${d.kind}`}>{kindLabels[d.kind]}</span>}
+              >
                 {d.image ? (
-                  <>
-                    {/* Barra de ventana estilo macOS: tres botones y la barra de direcciones */}
-                    <div className="dbar" aria-hidden="true">
-                      <span className="ddots">
-                        <span />
-                        <span />
-                        <span />
-                      </span>
-                      <span className="durl">{hostOf(d.href)}</span>
-                      <span className={`dbadge ${d.status}`}>{badges[d.status]}</span>
-                    </div>
-                    <div className="dshot">
-                      <Image
-                        src={d.image}
-                        alt={`Captura del inicio de la demo ${d.title}`}
-                        fill
-                        sizes="(max-width: 640px) 90vw, 360px"
-                      />
-                    </div>
-                  </>
+                  <Image
+                    src={d.image}
+                    alt={`Captura del inicio de ${d.title}`}
+                    fill
+                    sizes="(max-width: 700px) 92vw, 360px"
+                  />
                 ) : (
-                  <>
-                    <span className={`dbadge ${d.status}`}>{badges[d.status]}</span>
-                    {icons[d.key]}
-                  </>
+                  <div className="dart">{icons[d.key]}</div>
                 )}
-              </div>
+              </BrowserFrame>
               <div className="cbody">
                 <h3>{d.title}</h3>
                 <p className="dtext">{d.text}</p>
@@ -95,10 +97,27 @@ export function Demos() {
               </div>
             </article>
           ))}
+          <article className="card case demo invite">
+            <BrowserFrame tone="cv2">
+              <div className="dart">
+                <NewSiteIcon />
+              </div>
+            </BrowserFrame>
+            <div className="cbody">
+              <h3>{invite.title}</h3>
+              <p className="dtext">{invite.text}</p>
+              <ul className="dfeat" aria-label={`Incluye en ${invite.title}`}>
+                {invite.features.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+              <a className="btn dcta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                {invite.cta} <span className="arr">→</span>
+                <span className="sr-only"> (abre WhatsApp)</span>
+              </a>
+            </div>
+          </article>
         </div>
-        <a className="more" href="#contacto">
-          ¿Quieres una para tu negocio? Hablemos <span className="arr">→</span>
-        </a>
       </div>
     </section>
   );

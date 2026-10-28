@@ -30,6 +30,8 @@
   --hero-bg: #dce9f8;
   --footer-bg: #123a7a;
   --browser-bar: #e8eef7;
+  --bullet-demo: #2f6fd0;
+  --bullet-client: #16a34a;
 }
 
 /* Tema oscuro: todo en azules profundos de la misma paleta */
@@ -57,6 +59,8 @@
   --hero-bg: #0c1a3c;
   --footer-bg: #06102a;
   --browser-bar: #1a2f5e;
+  --bullet-demo: #7fa8f0;
+  --bullet-client: #4ade80;
 }
 html {
   scroll-behavior: smooth;
@@ -1015,20 +1019,20 @@ p {
 }
 .demo .cbody {
   flex: 1;
-  gap: 12px;
-  padding: 22px 24px 24px;
+  gap: 10px;
+  padding: 18px 20px 20px;
 }
 .demo .cbody h3 {
-  font-size: 18px;
+  font-size: 17px;
 }
-/* Con captura: la imagen ocupa todo el contenedor, debajo de una barra de ventana estilo macOS */
-.demo .cvis.has-shot {
+/* Marco de ventana (BrowserFrame en Demos.tsx): barra estilo macOS y debajo la captura o el ícono */
+.demo .cvis.dwin {
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
   background: var(--surface);
 }
-.demo .cvis.has-shot::before {
+.demo .cvis.dwin::before {
   display: none;
 }
 .dbar {
@@ -1040,6 +1044,11 @@ p {
   padding: 0 12px;
   background: var(--browser-bar);
   border-bottom: 1px solid var(--line);
+}
+.ddots,
+.dbar-end {
+  flex: none;
+  width: 42px;
 }
 .ddots {
   display: flex;
@@ -1058,80 +1067,89 @@ p {
 .ddots span:nth-child(3) {
   background: #28c840;
 }
+/* Buscador simulado, sin URL */
 .durl {
   flex: 1;
-  max-width: 220px;
-  height: 18px;
+  max-width: 200px;
+  height: 16px;
   margin: 0 auto;
-  padding: 0 10px;
   border-radius: 6px;
   background: var(--surface);
-  color: var(--soft);
-  font-size: 11px;
-  line-height: 18px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  border: 1px solid var(--line);
 }
 .dshot {
   position: relative;
   flex: 1;
   overflow: hidden;
 }
-/* En la barra de ventana la etiqueta va a la derecha, sin tapar la captura */
-.dbar .dbadge {
-  position: static;
-  flex: none;
-  padding: 2px 8px;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: var(--brand-text);
-  background: var(--surface);
-  border-color: var(--line);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-.dbar .dbadge.live::before {
-  width: 6px;
-  height: 6px;
-  margin-right: 6px;
-  background: #28c840;
-  box-shadow: 0 0 0 2px rgba(40, 200, 64, 0.25);
-}
 .dshot img {
   object-fit: cover;
   object-position: top;
 }
+/* Sin captura: ícono centrado sobre el degradado, con la misma retícula de las tarjetas */
+.dart {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.dart::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(closest-side, #000, transparent);
+  mask-image: radial-gradient(closest-side, #000, transparent);
+}
+.dart svg {
+  position: relative;
+}
 .dtext {
   color: var(--soft);
 }
+/* Etiqueta «• Cliente» / «• Demo»: arriba a la derecha dentro de la imagen */
 .dbadge {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  right: 12px;
   z-index: 1;
-  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #fff;
-  background: rgba(6, 16, 42, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgb(var(--shadow) / 0.22);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
-.dbadge.live::before {
+.dbadge::before {
   content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #8fe9e5;
-  box-shadow: 0 0 0 3px rgba(143, 233, 229, 0.3);
-  vertical-align: 1px;
+  background: var(--bullet-demo);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bullet-demo) 25%, transparent);
+}
+.dbadge.client::before {
+  background: var(--bullet-client);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bullet-client) 25%, transparent);
+}
+/* Tarjeta de invitación: botón de asesoría al pie */
+/* Proyectos y demos: tarjetas a 3/4 del tamaño anterior (3 columnas en escritorio, 2 en tableta, 1 en celular) */
+.demos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 22px;
 }
 .dfeat {
   margin: 0;
@@ -1150,27 +1168,25 @@ p {
   background: var(--mist);
   border: 1px solid var(--line);
 }
+/* Botón de cada tarjeta (usa .btn): mismo tamaño en todas, incluida la de invitación */
 .dcta {
   margin-top: auto;
-  padding-top: 8px;
+  align-self: flex-start;
+  padding: 11px 18px;
+  font-size: 14px;
+}
+/* Sitio aún sin publicar: píldora punteada, no parece botón */
+.dcta-soon {
+  margin-top: auto;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  width: fit-content;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border: 1px dashed var(--line-hover);
+  border-radius: 12px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--brand-text);
-  text-decoration: none;
-}
-.dcta:hover .arr {
-  transform: translate(3px, -3px);
-}
-.dcta:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-.dcta-soon {
-  color: var(--teal-text);
+  color: var(--soft);
 }
 .quote {
   padding: clamp(28px, 5vw, 56px);

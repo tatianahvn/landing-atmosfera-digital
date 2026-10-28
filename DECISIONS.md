@@ -29,6 +29,18 @@ Registro de decisiones tomadas donde el encargo era ambiguo o había que elegir.
 
 - **Capturas en las demos** (a petición): las tarjetas de Atmósfera Digital y Salón y belleza muestran una captura del inicio de cada sitio que ocupa todo el ancho y alto del espacio de imagen, bajo una barra de ventana estilo macOS (botones rojo, amarillo y verde, barra de direcciones con el dominio de la demo publicada y la etiqueta «Estás aquí» / «Demo en vivo» a la derecha, para que no tape la captura). Se ve la parte de arriba de la página; sin zoom propio en la imagen, solo el efecto de elevación de la tarjeta. La barra cambia de color con el tema (`--browser-bar`). Se tomaron con Chrome sin interfaz a 1440 × 900 (Atmósfera desde el build estático, en tema claro) y se guardaron en `public/demos/` como WebP de 960 × 600 (27 KB y 39 KB). Salud conserva el ícono hasta tener su demo. Como el sitio se exporta estático, `next/image` va con `images.unoptimized` y carga diferida. Si cambia el diseño de una demo, hay que volver a tomar su captura.
 
+- **«Demos para explorar» pasó a «Proyectos y demos»** (a petición), para mezclar trabajo real con ejemplos. Cuatro tarjetas en dos columnas (una en tableta y celular), primero los clientes:
+  - **Constructora en USA** (https://calnorthex.com/): el proyecto productivo para un cliente. El título es genérico (a petición) y el nombre, Calnorthex Concrete, va en la descripción. La captura muestra el inicio con la tercera imagen del carrusel (la obra con cimbra), tomada con Chrome sin interfaz deteniendo el carrusel en esa imagen. Enlace «Visitar sitio».
+  - **Clínica dental** (antes «Consultorio dental»): cliente en cartera, sitio en preparación (citas en línea, servicios, mapa, galería y horarios). Ícono de diente hasta tener captura; reemplaza a la tarjeta «Salud».
+  - **Salón y belleza** y **Atmósfera Digital**: las demos de antes.
+  - **Una sola etiqueta por tarjeta**: «• Cliente» (viñeta verde) o «• Demo» (viñeta azul), en una píldora arriba a la derecha dentro de la imagen, al doble del tamaño anterior para que se lea sobre las capturas. El estado lo indica el enlace de abajo («Visitar sitio», «Ver demo», «Recorre esta página» o «En preparación»).
+  - **Marco homologado**: todas las tarjetas, incluidas las que no tienen captura (clínica dental e invitación), llevan la misma barra de ventana estilo macOS: tres botones y un buscador vacío, sin URL (a petición).
+  - **Tarjeta de invitación «Tu nueva página web»** al final de la sección: el siguiente proyecto puede ser el del visitante, con botón «Agenda una asesoría gratuita» que abre WhatsApp (mismo enlace que la sección de contacto). Sustituye al enlace «¿Quieres una para tu negocio? Hablemos», que quedaba repetido. Textos en `invite` de `content.ts`.
+  - **Tarjetas más pequeñas** (a petición, 3/4): tres columnas en escritorio (~340 px cada una), dos en tableta y una en celular. Con cinco tarjetas, la última fila queda con dos.
+  - El menú y el ancla pasaron de «Demos» (`#demos`) a «Proyectos» (`#proyectos`). En `content.ts` cada tarjeta tiene `kind` (`client` o `demo`) y `link` (`here`, `external` o `soon`).
+
+- **Botones en las tarjetas de proyectos** (a petición: el enlace casi no se distinguía): «Visitar sitio», «Ver demo», «Recorre esta página» y «Agenda una asesoría gratuita» usan el mismo botón relleno de la página (`.btn`), en tamaño compacto (`.dcta`). «En preparación» queda como píldora punteada para que no parezca algo en lo que se puede hacer clic.
+
 ## Observaciones (sin cambiar)
 
 - Varios componentes usan estilos en línea (`style={{…}}`); se dejaron así para no alterar el diseño.
