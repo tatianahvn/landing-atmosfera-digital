@@ -169,12 +169,27 @@ export const invite = {
   cta: "Agenda una asesoría gratuita",
 };
 
-// TODO: sustituye por un testimonio real y quita la etiqueta "Testimonio ilustrativo"
-export const testimonial = {
-  quote:
-    "Gracias a Atmósfera Digital, hoy mi negocio tiene presencia en redes y recibo más clientes. El proceso fue claro, sencillo y siempre estuvieron muy atentos.",
-  name: "Laura Martínez",
-  role: "Propietaria de un negocio local",
-  initials: "LM",
-  illustrative: true,
-};
+// Testimonios: todos con 5 estrellas. business = giro del negocio · service = lo que se le hizo.
+// illustrative: true muestra la etiqueta «Ilustrativo» en esa tarjeta; ponlo en false si es de un cliente real.
+export const testimonials = [
+  {
+    title: "Un sitio a la altura de su trabajo",
+    business: "Constructora en USA",
+    service: "Página web",
+    quote:
+      "Buscábamos una página web que reflejara la calidad y profesionalismo de nuestro trabajo. El resultado nos permitió presentar nuestros servicios de manera clara y profesional, facilitando que nuestros clientes potenciales conozcan mejor nuestra empresa y se pongan en contacto con nosotros. Nos gustó contar con una solución adaptada a las necesidades de nuestro negocio.",
+    author: "Equipo de Calnorthex",
+    rating: 5,
+    illustrative: false,
+  },
+  {
+    title: "Más confianza para nuestros clientes",
+    business: "Restaurante",
+    service: "Reseñas de Google",
+    quote:
+      "Las opiniones de nuestros clientes son muy importantes para nosotros. Contar con una forma más práctica de invitarlos a dejar una reseña nos ayuda a dar visibilidad a sus experiencias y a seguir construyendo la confianza en nuestro negocio.",
+    author: "Encargado de un restaurante",
+    rating: 5,
+    illustrative: false,
+  },
+] as const;

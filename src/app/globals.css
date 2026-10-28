@@ -1201,36 +1201,63 @@ p {
   font-weight: 700;
   color: var(--soft);
 }
-.quote {
-  padding: clamp(28px, 5vw, 56px);
+/* Testimonios (Testimonials.tsx): tarjetas grandes, una debajo de otra */
+.tgrid {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.qmark {
-  color: #14a3a0;
-}
-.qtext {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(18px, 2.3vw, 24px);
-  line-height: 1.3;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+.tcard {
   margin: 0;
-  text-wrap: pretty;
-  max-width: 860px;
+  padding: clamp(28px, 5vw, 52px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
-.qavatar {
-  flex: none;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: #123a7a;
-  color: #fff;
-  font-weight: 700;
+.ttop {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tstars {
+  display: flex;
+  gap: 4px;
+}
+.tstars svg {
+  fill: var(--line);
+}
+.tstars svg.on {
+  fill: #f5b301;
+}
+.tcard h3 {
+  font-size: clamp(19px, 2.2vw, 24px);
+  font-weight: 700;
+}
+.tmeta {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal-text);
+}
+.tquote {
+  margin: 4px 0 0;
+  max-width: 860px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.tauthor {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+  font-size: 15px;
+}
+.qmark {
+  color: #14a3a0;
 }
 .qtag {
   font-size: 12px;
@@ -1525,9 +1552,6 @@ p {
 }
 [data-theme="dark"] .deep {
   box-shadow: inset 0 0 0 1px rgba(156, 192, 245, 0.14);
-}
-[data-theme="dark"] .qavatar {
-  background: #2f6fd0;
 }
 [data-theme="dark"] footer {
   border-top: 1px solid rgba(156, 192, 245, 0.12);

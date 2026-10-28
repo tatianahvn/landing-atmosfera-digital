@@ -43,6 +43,8 @@ Registro de decisiones tomadas donde el encargo era ambiguo o había que elegir.
 
 - **Botones en las tarjetas de proyectos** (a petición: el enlace casi no se distinguía): «Visitar sitio», «Ver demo», «Recorre esta página» y «Agenda una asesoría gratuita» usan el mismo botón relleno de la página (`.btn`), en tamaño compacto (`.dcta`). «En preparación» queda como píldora punteada para que no parezca algo en lo que se puede hacer clic.
 
+- **Dos testimonios grandes** (a petición), uno debajo de otro y a todo lo ancho: primero el de Calnorthex (cliente real, «Equipo de Calnorthex»; giro «Constructora en USA», como su tarjeta de proyectos) y luego el del restaurante (reseñas de Google). Cada tarjeta lleva comillas, 5 estrellas (con texto para lectores de pantalla), título, giro · servicio, la cita en letra grande y quién la dice. El título del de Calnorthex («Un sitio a la altura de su trabajo») lo propuse yo porque no venía en el texto. La etiqueta «Ilustrativo» ahora es por testimonio (`illustrative` en `content.ts`): ninguno de los dos la lleva porque ambos son de clientes reales (confirmado).
+
 ## Observaciones (sin cambiar)
 
 - Varios componentes usan estilos en línea (`style={{…}}`); se dejaron así para no alterar el diseño.
